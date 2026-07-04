@@ -1,0 +1,556 @@
+/* ----------------------------------------------------
+   CASE STUDY BASE & LAYOUT
+---------------------------------------------------- */
+.case-study-main {
+  padding-top: var(--header-height-large);
+  min-height: 80vh;
+}
+
+.case-study-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+  color: var(--text-muted);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--bg-secondary);
+  border-top-color: var(--text-primary);
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ----------------------------------------------------
+   HERO HEADER
+---------------------------------------------------- */
+.cs-hero {
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+}
+
+.cs-category {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.cs-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  max-width: 900px;
+}
+
+.cs-subtitle {
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 40px;
+  max-width: 800px;
+}
+
+/* Meta Data Grid */
+.cs-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: 28px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 40px;
+}
+
+.cs-meta-item h4 {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.cs-meta-item p, .cs-meta-item span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.cs-meta-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.cs-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  padding: 8px 16px;
+  border-radius: var(--border-radius-sm);
+}
+
+.cs-btn-icon:hover {
+  border-color: var(--text-primary);
+  background-color: var(--bg-secondary);
+}
+
+/* Hero Image Mockup */
+.cs-hero-img-card {
+  width: 100%;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
+  margin-top: 40px;
+}
+
+.cs-hero-img {
+  width: 100%;
+  aspect-ratio: 21/9;
+  object-fit: cover;
+}
+
+/* ----------------------------------------------------
+   CASE STUDY CONTENT BODY
+---------------------------------------------------- */
+.cs-body-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 80px;
+  padding: 80px 0;
+  position: relative;
+}
+
+/* Sticky Navigation Table of Contents */
+.cs-toc-sidebar {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.cs-toc-sidebar h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.cs-toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cs-toc-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding-left: 12px;
+  border-left: 2px solid transparent;
+  transition: var(--transition-fast);
+}
+
+.cs-toc-link:hover, .cs-toc-link.active {
+  color: var(--text-primary);
+  border-left-color: var(--text-primary);
+}
+
+/* Content Details Column */
+.cs-details-content {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  max-width: 800px;
+}
+
+.cs-section {
+  scroll-margin-top: 120px;
+}
+
+.cs-section h2 {
+  font-size: 1.85rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.cs-section p {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.cs-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* Highlighting Boxes */
+.highlight-panel {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 32px;
+  margin-top: 24px;
+}
+
+.highlight-panel h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.highlight-panel p {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+  line-height: 1.55;
+}
+
+/* ----------------------------------------------------
+   ARCHITECTURE SECTION
+---------------------------------------------------- */
+.cs-architecture-graphic {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 40px;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.architecture-svg {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.components-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.component-item {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.component-item h4 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.component-item p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* ----------------------------------------------------
+   ALGORITHMS & CODE SECTION
+---------------------------------------------------- */
+.code-panel {
+  background-color: hsl(30, 15%, 12%); /* Charcoal Dark Code BG */
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin-top: 24px;
+}
+
+.code-header {
+  background-color: hsl(30, 15%, 8%);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid hsl(30, 15%, 16%);
+}
+
+.code-lang-label {
+  color: hsl(30, 20%, 75%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+}
+
+.code-window-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.code-window-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.code-window-dots span:nth-child(1) { background-color: #ff5f56; }
+.code-window-dots span:nth-child(2) { background-color: #ffbd2e; }
+.code-window-dots span:nth-child(3) { background-color: #27c93f; }
+
+.code-block {
+  padding: 24px;
+  overflow-x: auto;
+}
+
+.code-block pre {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: hsl(30, 20%, 90%);
+}
+
+/* Syntax Highlighting overrides */
+.code-block .keyword { color: #f92672; }
+.code-block .function { color: #66d9ef; }
+.code-block .string { color: #e6db74; }
+.code-block .number { color: #ae81ff; }
+.code-block .comment { color: #75715e; font-style: italic; }
+
+/* ----------------------------------------------------
+   CHALLENGES & SOLUTIONS SECTION
+---------------------------------------------------- */
+.challenges-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.challenge-item {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+}
+
+.challenge-header {
+  background-color: var(--bg-secondary);
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.challenge-header svg {
+  color: hsl(0, 50%, 50%); /* alert red icon */
+  flex-shrink: 0;
+}
+
+.challenge-header h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0;
+}
+
+.challenge-body {
+  padding: 24px;
+}
+
+.challenge-description {
+  margin-bottom: 20px;
+}
+
+.challenge-description h4, .solution-details h4 {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.solution-details {
+  background-color: hsl(120, 30%, 97%); /* Muted warm green tint */
+  border: 1px solid hsl(120, 20%, 90%);
+  padding: 20px;
+  border-radius: var(--border-radius-sm);
+}
+
+.solution-details h4 {
+  color: hsl(120, 40%, 30%);
+}
+
+.solution-details p {
+  color: hsl(120, 40%, 15%);
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ----------------------------------------------------
+   RESULTS & OUTCOME SECTION
+---------------------------------------------------- */
+.results-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.results-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.results-list svg {
+  color: hsl(120, 40%, 35%);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* ----------------------------------------------------
+   CASE STUDY BOTTOM NAVIGATION
+---------------------------------------------------- */
+.cs-bottom-nav {
+  border-top: 1px solid var(--border-color);
+  padding: 60px 0;
+  margin-top: 60px;
+  background-color: var(--bg-secondary);
+}
+
+.cs-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cs-nav-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cs-nav-btn.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.cs-nav-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.cs-nav-link {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cs-nav-link:hover {
+  text-decoration: underline;
+}
+
+/* ----------------------------------------------------
+   RESPONSIVE STYLES
+---------------------------------------------------- */
+
+/* Laptop Breakpoint: 1024px - 1439px */
+@media (max-width: 1439px) {
+  .cs-title {
+    font-size: 2.6rem;
+  }
+  .cs-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+/* Tablet Breakpoint: 768px - 1023px */
+@media (max-width: 1023px) {
+  .cs-body-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .cs-toc-sidebar {
+    display: none; /* Hide sticky sidebar TOC on mobile/tablet */
+  }
+}
+
+/* Mobile Breakpoint: 320px - 767px */
+@media (max-width: 767px) {
+  .cs-title {
+    font-size: 2rem;
+  }
+  
+  .cs-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .cs-meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  .cs-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .cs-nav-container {
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+  }
+  
+  .cs-nav-btn.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* Accessibility: Respect user reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+  .spinner {
+    animation: none !important;
+    border-top-color: var(--text-muted) !important;
+  }
+}
+

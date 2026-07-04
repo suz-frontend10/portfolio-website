@@ -1,0 +1,17 @@
+{
+  "name": "susanna-portfolio",
+  "version": "1.0.0",
+  "description": "Premium recruiter-focused personal portfolio website for Susanna",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y http-server -p 3000"
+  },
+  "keywords": [
+    "portfolio",
+    "resume",
+    "developer",
+    "AI"
+  ],
+  "author": "Susanna",
+  "license": "ISC"
+}
