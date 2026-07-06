@@ -3,7 +3,7 @@
 ---------------------------------------------------- */
 :root {
   /* Colors */
-  --bg-primary: #FFFDFC;
+  --bg-primary: #FFF0F4;
   --bg-secondary: #FFFFFF;
   --bg-tertiary: #FFFFFF;
   --text-primary: #1D1D1F;
@@ -129,11 +129,11 @@ button, input, textarea {
 }
 
 .bg-beige {
-  background: linear-gradient(180deg, #FFFFFF 0%, #FFF8FB 100%);
+  background-color: #FFFFFF;
 }
 
 section:not(.bg-beige) {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
 }
 
 .text-center {
