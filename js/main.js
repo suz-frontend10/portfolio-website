@@ -156,4 +156,21 @@ function initScrollAnimations() {
   }, observerOptions);
 
   animatedElements.forEach(el => observer.observe(el));
+
+  // Fallback 1: Trigger immediately for any elements that are already visible in the viewport
+  setTimeout(() => {
+    animatedElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        el.classList.add("visible");
+      }
+    });
+  }, 150);
+
+  // Fallback 2: Make everything visible after 1.2 seconds as a final safety net
+  setTimeout(() => {
+    animatedElements.forEach(el => {
+      el.classList.add("visible");
+    });
+  }, 1200);
 }
