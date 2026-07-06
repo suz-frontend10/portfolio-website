@@ -1441,6 +1441,18 @@ button, input, textarea {
     gap: 20px;
   }
   
+  /* Skills Mobile Override */
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  /* Projects Mobile Override */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
   /* Certifications Mobile */
   .certifications-grid {
     grid-template-columns: 1fr;
