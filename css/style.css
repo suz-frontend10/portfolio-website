@@ -352,9 +352,7 @@ section:not(.bg-beige) {
 ---------------------------------------------------- */
 .hero {
   position: relative;
-  padding: 140px 0 30px 0;
-  display: flex;
-  align-items: center;
+  padding: 180px 0 100px 0;
   overflow: hidden;
   background-color: var(--bg-primary);
 }
@@ -1424,7 +1422,7 @@ section:not(.bg-beige) {
   
   /* Hero Mobile */
   .hero {
-    padding: 110px 0 20px 0;
+    padding: 140px 0 60px 0;
   }
   
   .hero-title {
