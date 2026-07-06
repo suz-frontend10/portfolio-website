@@ -248,7 +248,7 @@ section:not(.bg-beige) {
   display: inline-flex;
   align-items: center;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--accent);
   font-size: 0.95rem;
   transition: var(--transition-fast);
 }
@@ -260,7 +260,7 @@ section:not(.bg-beige) {
 }
 
 .btn-text:hover {
-  color: var(--accent);
+  color: var(--accent-hover);
 }
 
 .btn-text:hover .arrow {
