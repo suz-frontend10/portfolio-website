@@ -37,7 +37,6 @@
 
   <!-- Hero Section -->
   <section class="hero" id="home">
-    <canvas id="hero-canvas" class="hero-canvas"></canvas>
     <div class="hero-container container">
       <div class="hero-content">
         <p class="hero-intro">Hi, I'm Susanna Hebzibah.</p>
@@ -55,7 +54,7 @@
   </section>
 
   <!-- About Section -->
-  <section class="about section-padding" id="about">
+  <section class="about section-padding fade-up" id="about">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">About Me</span>
@@ -86,7 +85,7 @@
 
 
   <!-- Skills Section -->
-  <section class="skills section-padding" id="skills">
+  <section class="skills section-padding fade-up" id="skills">
     <div class="container">
       <div class="section-header text-center">
         <span class="section-tag">Core Toolkit</span>
@@ -102,39 +101,60 @@
             <h3>Programming Languages</h3>
           </div>
           <ul class="skills-list">
-            <li><span>Python (Primary Language)</span></li>
+            <li><span>Python</span></li>
             <li><span>Java</span></li>
-            <li><span>C / C++</span></li>
             <li><span>SQL</span></li>
+            <li><span>C / C++</span></li>
           </ul>
         </div>
 
-        <!-- Web Technologies -->
+        <!-- AI & Machine Learning -->
         <div class="skills-category-card">
           <div class="skills-header">
             <div class="skill-category-icon">
-              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
             </div>
-            <h3>Web Technologies</h3>
+            <h3>AI & Machine Learning</h3>
           </div>
           <ul class="skills-list">
-            <li><span>HTML5</span></li>
-            <li><span>CSS3</span></li>
-            <li><span>JavaScript (ES6)</span></li>
+            <li><span>OpenAI API Integration</span></li>
+            <li><span>Prompt Engineering</span></li>
+            <li><span>NumPy</span></li>
+            <li><span>Pandas</span></li>
+            <li><span>Scikit-learn</span></li>
+            <li><span>TensorFlow / PyTorch <span class="skill-learning-tag">(Learning)</span></span></li>
+            <li><span>Machine Learning Fundamentals</span></li>
           </ul>
         </div>
 
-        <!-- Backend Development -->
+        <!-- Backend -->
         <div class="skills-category-card">
           <div class="skills-header">
             <div class="skill-category-icon">
               <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>
             </div>
-            <h3>Backend Development</h3>
+            <h3>Backend</h3>
           </div>
           <ul class="skills-list">
+            <li><span>FastAPI</span></li>
+            <li><span>Flask</span></li>
             <li><span>REST APIs</span></li>
-            <li><span>Node.js / Express</span></li>
+          </ul>
+        </div>
+
+        <!-- Frontend -->
+        <div class="skills-category-card">
+          <div class="skills-header">
+            <div class="skill-category-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <h3>Frontend</h3>
+          </div>
+          <ul class="skills-list">
+            <li><span>HTML</span></li>
+            <li><span>CSS</span></li>
+            <li><span>JavaScript</span></li>
+            <li><span>React</span></li>
           </ul>
         </div>
 
@@ -153,20 +173,6 @@
           </ul>
         </div>
 
-        <!-- AI & Machine Learning -->
-        <div class="skills-category-card">
-          <div class="skills-header">
-            <div class="skill-category-icon">
-              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-            </div>
-            <h3>AI & Machine Learning</h3>
-          </div>
-          <ul class="skills-list">
-            <li><span>OpenAI API Integration</span></li>
-            <li><span>Prompt Engineering</span></li>
-          </ul>
-        </div>
-
         <!-- Developer Tools -->
         <div class="skills-category-card">
           <div class="skills-header">
@@ -176,16 +182,31 @@
             <h3>Developer Tools</h3>
           </div>
           <ul class="skills-list">
-            <li><span>Git</span></li>
-            <li><span>GitHub</span></li>
+            <li><span>Git & GitHub</span></li>
             <li><span>VS Code</span></li>
             <li><span>Postman</span></li>
+          </ul>
+        </div>
+
+        <!-- Learning -->
+        <div class="skills-category-card">
+          <div class="skills-header">
+            <div class="skill-category-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 6V2m0 20v-4M6 12H2m20 0h-4M18.36 5.64l-2.83 2.83M8.46 15.54l-2.83 2.83M18.36 18.36l-2.83-2.83M8.46 8.46L5.63 5.64"></path></svg>
+            </div>
+            <h3>Learning</h3>
+          </div>
+          <ul class="skills-list">
+            <li><span>LangChain</span></li>
+            <li><span>RAG</span></li>
+            <li><span>Vector Databases</span></li>
+            <li><span>Docker</span></li>
           </ul>
         </div>
       </div>
     </div>
   </section>  <!-- Featured Projects -->
-  <section class="projects section-padding bg-beige" id="projects">
+  <section class="projects section-padding bg-beige fade-up" id="projects">
     <div class="container">
       <div class="section-header text-center">
         <span class="section-tag">Featured Work</span>
@@ -249,7 +270,7 @@
   </section>
 
   <!-- Certifications Section -->
-  <section class="certifications section-padding" id="certifications">
+  <section class="certifications section-padding fade-up" id="certifications">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Credentials</span>
@@ -262,23 +283,22 @@
             <div class="cert-icon-wrapper">
               <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1M12 20v1M3 12h1M20 12h1M18.36 5.64l-.7.7M6.34 17.66l-.7.7M18.36 18.36l-.7-.7M6.34 6.34l-.7-.7M9 12a3 3 0 1 1 6 0 3 3 0 0 1-6 0z"></path></svg>
             </div>
-            <div class="cert-meta">
-              <span class="cert-org">IBM (via Coursera)</span>
-              <span class="cert-year">Completed • 2026</span>
-            </div>
           </div>
           <h3 class="cert-title">IBM AI Foundations & Generative AI</h3>
           <div class="cert-skills-section">
-            <span class="cert-skills-label">Skills Gained</span>
             <ul class="cert-skills-list">
               <li>Generative AI Workflows</li>
               <li>Large Language Model Basics</li>
               <li>Responsible AI Ethics</li>
             </ul>
           </div>
-          <a href="assets/certificates/IBMAI.pdf" class="cert-link" target="_blank" rel="noopener">
-            View Certificate ↗
-          </a>
+          <div class="cert-footer">
+            <div class="cert-meta-info">
+              <span class="cert-org">IBM</span>
+              <span class="cert-year">2026</span>
+            </div>
+            <a href="assets/certificates/IBMAI.pdf" class="btn-cert-outline" target="_blank" rel="noopener">View Certificate</a>
+          </div>
         </div>
 
         <!-- Certification 2: Prompt AI -->
@@ -287,23 +307,22 @@
             <div class="cert-icon-wrapper">
               <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
             </div>
-            <div class="cert-meta">
-              <span class="cert-org">Vanderbilt University</span>
-              <span class="cert-year">Completed • 2025</span>
-            </div>
           </div>
           <h3 class="cert-title">Prompt Engineering Specialization</h3>
           <div class="cert-skills-section">
-            <span class="cert-skills-label">Skills Gained</span>
             <ul class="cert-skills-list">
               <li>Prompt Design Patterns</li>
               <li>LLM Instruction Tuning</li>
               <li>ChatGPT System Prompts</li>
             </ul>
           </div>
-          <a href="assets/certificates/promptai.pdf" class="cert-link" target="_blank" rel="noopener">
-            View Certificate ↗
-          </a>
+          <div class="cert-footer">
+            <div class="cert-meta-info">
+              <span class="cert-org">Vanderbilt University</span>
+              <span class="cert-year">2025</span>
+            </div>
+            <a href="assets/certificates/promptai.pdf" class="btn-cert-outline" target="_blank" rel="noopener">View Certificate</a>
+          </div>
         </div>
 
         <!-- Certification 3: Oracle Database -->
@@ -312,23 +331,22 @@
             <div class="cert-icon-wrapper">
               <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>
             </div>
-            <div class="cert-meta">
-              <span class="cert-org">Oracle Academy</span>
-              <span class="cert-year">Completed • 2025</span>
-            </div>
           </div>
           <h3 class="cert-title">Database Foundation & SQL</h3>
           <div class="cert-skills-section">
-            <span class="cert-skills-label">Skills Gained</span>
             <ul class="cert-skills-list">
               <li>SQL Query Optimization</li>
               <li>Database Schema Design</li>
               <li>Relational Data Systems</li>
             </ul>
           </div>
-          <a href="assets/certificates/dbms-oracle.pdf" class="cert-link" target="_blank" rel="noopener">
-            View Certificate ↗
-          </a>
+          <div class="cert-footer">
+            <div class="cert-meta-info">
+              <span class="cert-org">Oracle Academy</span>
+              <span class="cert-year">2025</span>
+            </div>
+            <a href="assets/certificates/dbms-oracle.pdf" class="btn-cert-outline" target="_blank" rel="noopener">View Certificate</a>
+          </div>
         </div>
 
         <!-- Certification 4: Node.js Backend -->
@@ -337,30 +355,29 @@
             <div class="cert-icon-wrapper">
               <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 17 22 12"></polyline></svg>
             </div>
-            <div class="cert-meta">
-              <span class="cert-org">Infosys Springboard</span>
-              <span class="cert-year">Completed • 2025</span>
-            </div>
           </div>
           <h3 class="cert-title">Node.js Developer Credential</h3>
           <div class="cert-skills-section">
-            <span class="cert-skills-label">Skills Gained</span>
             <ul class="cert-skills-list">
               <li>REST API Architecture</li>
               <li>Express.js Router Flows</li>
               <li>Backend Server Routing</li>
             </ul>
           </div>
-          <a href="assets/certificates/nodejs.pdf" class="cert-link" target="_blank" rel="noopener">
-            View Certificate ↗
-          </a>
+          <div class="cert-footer">
+            <div class="cert-meta-info">
+              <span class="cert-org">Infosys Springboard</span>
+              <span class="cert-year">2025</span>
+            </div>
+            <a href="assets/certificates/nodejs.pdf" class="btn-cert-outline" target="_blank" rel="noopener">View Certificate</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Currently Learning Section -->
-  <section class="learning section-padding bg-beige" id="learning">
+  <section class="learning section-padding bg-beige fade-up" id="learning">
     <div class="container">
       <div class="section-header text-center">
         <span class="section-tag">Learning Roadmap</span>
@@ -480,7 +497,7 @@
   </section>
 
   <!-- Resume Section -->
-  <section class="resume section-padding" id="resume">
+  <section class="resume section-padding fade-up" id="resume">
     <div class="container">
       <div class="resume-card">
         <div class="resume-info">
@@ -500,7 +517,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="contact section-padding bg-beige" id="contact">
+  <section class="contact section-padding bg-beige fade-up" id="contact">
     <div class="container">
       <div class="section-header text-center">
         <span class="section-tag">Get In Touch</span>
@@ -541,16 +558,6 @@
               <div>
                 <h4>GitHub</h4>
                 <a href="https://github.com/suz-frontend10" target="_blank" rel="noopener">github.com/suz-frontend10</a>
-              </div>
-            </div>
-
-            <div class="contact-info-item">
-              <div class="contact-info-icon">
-                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-              </div>
-              <div>
-                <h4>Content Creator</h4>
-                <a href="https://instagram.com/suzycoreeeeee" target="_blank" rel="noopener">@suzycoreeeeee</a>
               </div>
             </div>
 
@@ -621,7 +628,6 @@
           <h4>Social Profiles</h4>
           <a href="https://linkedin.com/in/susanna-hebzibah-posupo" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/suz-frontend10" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://instagram.com/suzycoreeeeee" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
     </div>

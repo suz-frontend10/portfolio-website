@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   initNavbar();
   initMobileMenu();
-  initHeroCanvas();
   initScrollSpy();
-  initAchievementsCounter();
   initContactForm();
+  initScrollAnimations();
 });
 
 /* ----------------------------------------------------
@@ -57,161 +56,6 @@ function initMobileMenu() {
 }
 
 /* ----------------------------------------------------
-   HERO CANVAS MICRO-ANIMATION (Neural Web)
----------------------------------------------------- */
-function initHeroCanvas() {
-  const canvas = document.getElementById("hero-canvas");
-  const heroSection = document.getElementById("home");
-  if (!canvas || !heroSection) return;
-
-  const ctx = canvas.getContext("2d");
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    return;
-  }
-  let animationFrameId;
-  let particles = [];
-  let mouse = { x: null, y: null, radius: 150 };
-  let active = true;
-
-  // Configuration
-  const particleCount = 45;
-  const connectionDistance = 120;
-  const particleColor = "rgba(99, 102, 241, 0.65)";
-  const lineColor = "rgba(139, 92, 246, 0.2)";
-
-  class Particle {
-    constructor() {
-      this.reset();
-      // Scatter initially
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-    }
-
-    reset() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 2 + 1; // 1px to 3px
-      this.speedX = Math.random() * 0.4 - 0.2; // Slow velocities
-      this.speedY = Math.random() * 0.4 - 0.2;
-      this.baseX = this.x;
-      this.baseY = this.y;
-      this.density = Math.random() * 20 + 2;
-    }
-
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-
-      // Bounce on edges
-      if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-      if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-
-      // Mouse interactive push
-      if (mouse.x !== null && mouse.y !== null) {
-        let dx = mouse.x - this.x;
-        let dy = mouse.y - this.y;
-        let distance = Math.hypot(dx, dy);
-        
-        if (distance < mouse.radius) {
-          let force = (mouse.radius - distance) / mouse.radius;
-          let directionX = dx / distance;
-          let directionY = dy / distance;
-          this.x -= directionX * force * 1.5;
-          this.y -= directionY * force * 1.5;
-        }
-      }
-    }
-
-    draw() {
-      ctx.fillStyle = particleColor;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.closePath();
-      ctx.fill();
-    }
-  }
-
-  function resizeCanvas() {
-    canvas.width = heroSection.offsetWidth;
-    canvas.height = heroSection.offsetHeight;
-    initParticles();
-  }
-
-  function initParticles() {
-    particles = [];
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
-  }
-
-  function drawConnections() {
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        let dx = particles[i].x - particles[j].x;
-        let dy = particles[i].y - particles[j].y;
-        let dist = Math.hypot(dx, dy);
-
-        if (dist < connectionDistance) {
-          // Fade connection based on distance
-          let opacity = 1 - (dist / connectionDistance);
-          ctx.strokeStyle = lineColor.replace("0.4", (opacity * 0.4).toFixed(2));
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-          ctx.closePath();
-        }
-      }
-    }
-  }
-
-  function animate() {
-    if (!active) return;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    particles.forEach(p => {
-      p.update();
-      p.draw();
-    });
-    
-    drawConnections();
-    animationFrameId = requestAnimationFrame(animate);
-  }
-
-  // Event Listeners
-  window.addEventListener("resize", resizeCanvas);
-  
-  heroSection.addEventListener("mousemove", (e) => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-
-  heroSection.addEventListener("mouseleave", () => {
-    mouse.x = null;
-    mouse.y = null;
-  });
-
-  // Intersection Observer: Pause canvas rendering when hero is out of screen (battery saving)
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      active = entry.isIntersecting;
-      if (active) {
-        animate();
-      } else {
-        cancelAnimationFrame(animationFrameId);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  observer.observe(heroSection);
-  resizeCanvas();
-}
-
-/* ----------------------------------------------------
    SCROLL SPY (Nav Active Link Sync)
 ---------------------------------------------------- */
 function initScrollSpy() {
@@ -241,60 +85,7 @@ function initScrollSpy() {
   });
 }
 
-/* ----------------------------------------------------
-   STATISTIC COUNTER ANIMATION
----------------------------------------------------- */
-function initAchievementsCounter() {
-  const counters = document.querySelectorAll(".counter");
-  const achievementsSection = document.getElementById("achievements");
-  if (!counters.length || !achievementsSection) return;
 
-  let animated = false;
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const animateCounters = () => {
-    counters.forEach(counter => {
-      const target = parseInt(counter.getAttribute("data-target"), 10);
-      if (prefersReducedMotion) {
-        counter.textContent = target;
-        return;
-      }
-      const duration = 2000; // 2 seconds
-      const startTime = performance.now();
-      
-      const updateValue = (currentTime) => {
-        const elapsedTime = currentTime - startTime;
-        const progress = Math.min(elapsedTime / duration, 1);
-        
-        // Easing out quadratic function
-        const easeProgress = progress * (2 - progress);
-        const currentValue = Math.floor(easeProgress * target);
-        
-        counter.textContent = currentValue;
-        
-        if (progress < 1) {
-          requestAnimationFrame(updateValue);
-        } else {
-          counter.textContent = target;
-        }
-      };
-      
-      requestAnimationFrame(updateValue);
-    });
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !animated) {
-        animateCounters();
-        animated = true;
-        observer.unobserve(achievementsSection); // Run once and stop
-      }
-    });
-  }, { threshold: 0.2 });
-
-  observer.observe(achievementsSection);
-}
 
 /* ----------------------------------------------------
    CONTACT FORM SUBMIT (Mock Backend Sync)
@@ -340,4 +131,29 @@ function initContactForm() {
       
     }, 1500);
   });
+}
+
+/* ----------------------------------------------------
+   NATIVE SCROLL FADE-UP INTERSECTION OBSERVER
+---------------------------------------------------- */
+function initScrollAnimations() {
+  const animatedElements = document.querySelectorAll(".fade-up");
+  if (animatedElements.length === 0) return;
+
+  const observerOptions = {
+    root: null,
+    threshold: 0.08,
+    rootMargin: "0px 0px -40px 0px"
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // trigger animation only once
+      }
+    });
+  }, observerOptions);
+
+  animatedElements.forEach(el => observer.observe(el));
 }

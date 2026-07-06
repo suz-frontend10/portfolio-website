@@ -3,19 +3,19 @@
 ---------------------------------------------------- */
 :root {
   /* Colors */
-  --bg-primary: #03001C; /* Deep Obsidian Purple-Black */
-  --bg-secondary: #0A0915; /* Sleek dark card background */
-  --bg-tertiary: #121026; /* Dark borders / inputs */
-  --text-primary: #FFFFFF; /* Pure White */
-  --text-secondary: #E2E8F0; /* Soft Slate-White */
-  --text-muted: #94A3B8; /* Slate grey for details */
-  --border-color: rgba(255, 255, 255, 0.08); /* Semi-transparent border */
+  --bg-primary: #FFF9FB;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #FFFFFF;
+  --text-primary: #1D1D1D;
+  --text-secondary: #6B6B6B;
+  --text-muted: #8E8E8E;
+  --border-color: #F1DDE4;
   
   /* Accents */
-  --accent: #6366F1; /* Electric Indigo */
-  --accent-hover: #8B5CF6; /* Vibrant Violet */
-  --accent-light: rgba(99, 102, 241, 0.1); /* Transparent indigo for tags */
-  --accent-tint: rgba(139, 92, 246, 0.05); /* Soft tint */
+  --accent: #D97C9B;
+  --accent-hover: #C86486;
+  --accent-light: #FFF0F4;
+  --accent-tint: rgba(217, 124, 155, 0.04);
   
   /* Fonts */
   --font-title: 'Outfit', sans-serif;
@@ -26,15 +26,15 @@
   --header-height-large: 80px;
   --header-height-small: 60px;
   
-  /* Shadows */
-  --shadow-subtle: 0 4px 30px rgba(0, 0, 0, 0.4);
-  --shadow-card: 0 10px 40px -15px rgba(0, 0, 0, 0.6);
-  --shadow-card-hover: 0 0 30px rgba(99, 102, 241, 0.25); /* Glowing indigo shadow on hover */
-  --shadow-nav: 0 4px 30px rgba(0, 0, 0, 0.5);
+  /* Shadows - soft, clean, expensive shadows */
+  --shadow-subtle: 0 4px 20px rgba(217, 124, 155, 0.03);
+  --shadow-card: 0 4px 16px rgba(27, 22, 25, 0.02);
+  --shadow-card-hover: 0 12px 32px rgba(27, 22, 25, 0.06);
+  --shadow-nav: 0 2px 20px rgba(217, 124, 155, 0.03);
 
   /* Transitions */
-  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-fast: all 0.2s ease;
+  --transition-smooth: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-fast: all 150ms ease;
   
   /* Border Radii */
   --border-radius-sm: 8px;
@@ -129,6 +129,10 @@ button, input, textarea {
 }
 
 .bg-beige {
+  background-color: var(--bg-primary);
+}
+
+section:not(.bg-beige) {
   background-color: var(--bg-secondary);
 }
 
@@ -193,19 +197,28 @@ button, input, textarea {
   font-size: 0.95rem;
   cursor: pointer;
   transition: var(--transition-smooth);
+  border: 1px solid transparent;
+}
+
+.btn svg {
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .btn-primary {
   background-color: var(--accent);
-  color: var(--bg-primary);
+  color: #FFFFFF;
   border: 1px solid var(--accent);
 }
 
 .btn-primary:hover {
   background-color: var(--accent-hover);
   border-color: var(--accent-hover);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 25px rgba(99, 102, 241, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 124, 155, 0.15);
+}
+
+.btn-primary:hover svg {
+  transform: translateX(4px);
 }
 
 .btn-secondary {
@@ -215,11 +228,15 @@ button, input, textarea {
 }
 
 .btn-secondary:hover {
-  background-color: var(--bg-secondary);
+  background-color: var(--accent);
   border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 124, 155, 0.12);
+}
+
+.btn-secondary:hover svg {
+  transform: translateX(4px);
 }
 
 .btn-text {
@@ -231,8 +248,18 @@ button, input, textarea {
   transition: var(--transition-fast);
 }
 
+.btn-text .arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  margin-left: 6px;
+}
+
 .btn-text:hover {
-  gap: 8px; /* micro transition nudge */
+  color: var(--accent);
+}
+
+.btn-text:hover .arrow {
+  transform: translateX(4px);
 }
 
 /* ----------------------------------------------------
@@ -254,7 +281,7 @@ button, input, textarea {
 
 .navbar.shrink {
   height: var(--header-height-small);
-  background-color: rgba(3, 0, 28, 0.85);
+  background-color: rgba(255, 249, 251, 0.85);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -292,27 +319,14 @@ button, input, textarea {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-secondary);
-  position: relative;
-  padding: 8px 0;
-}
-
-.nav-link:hover, .nav-link.active {
-  color: var(--accent);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--accent);
+  padding: 8px 16px;
+  border-radius: 20px;
   transition: var(--transition-smooth);
 }
 
-.nav-link.active::after, .nav-link:hover::after {
-  width: 100%;
+.nav-link:hover, .nav-link.active {
+  color: var(--accent-hover);
+  background-color: var(--accent-light);
 }
 
 .nav-toggle {
@@ -500,7 +514,7 @@ button, input, textarea {
 }
 
 .skills-category-card {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
   padding: 22px 24px;
@@ -527,9 +541,14 @@ button, input, textarea {
   justify-content: center;
   width: 40px;
   height: 40px;
-  background-color: var(--bg-secondary);
+  background-color: var(--accent-light);
   border-radius: var(--border-radius-sm);
-  color: var(--text-primary);
+  color: var(--accent);
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skills-category-card:hover .skill-category-icon {
+  transform: scale(1.06);
 }
 
 .skills-header h3 {
@@ -576,7 +595,7 @@ button, input, textarea {
 }
 
 .project-card {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
   overflow: hidden;
@@ -607,7 +626,7 @@ button, input, textarea {
 }
 
 .project-card:hover .project-image {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .project-category-tag {
@@ -691,7 +710,7 @@ button, input, textarea {
 }
 
 .learning-card {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
   padding: 32px;
@@ -854,7 +873,7 @@ button, input, textarea {
 }
 
 .cert-card {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
   padding: 28px;
@@ -874,60 +893,33 @@ button, input, textarea {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .cert-icon-wrapper {
   width: 44px;
   height: 44px;
-  border-radius: 50%;
-  background-color: var(--bg-secondary);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--accent-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-secondary);
+  color: var(--accent);
   flex-shrink: 0;
-}
-
-.cert-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.cert-org {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.cert-year {
-  font-size: 0.8rem;
-  color: var(--text-muted);
 }
 
 .cert-title {
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   line-height: 1.35;
   letter-spacing: -0.01em;
 }
 
 .cert-skills-section {
   flex-grow: 1;
-  margin-bottom: 24px;
-}
-
-.cert-skills-label {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .cert-skills-list {
@@ -939,9 +931,9 @@ button, input, textarea {
 .cert-skills-list li {
   position: relative;
   padding-left: 16px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .cert-skills-list li:last-child {
@@ -952,24 +944,53 @@ button, input, textarea {
   content: "•";
   position: absolute;
   left: 0;
+  color: var(--accent);
+}
+
+.cert-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.cert-meta-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cert-org {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cert-year {
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
-.cert-link {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: var(--transition-fast);
+.btn-cert-outline {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  align-self: flex-start;
+  justify-content: center;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background-color: transparent;
+  transition: var(--transition-smooth);
 }
 
-.cert-link:hover {
-  color: var(--accent-color);
-  text-decoration: underline;
+.btn-cert-outline:hover {
+  border-color: var(--accent);
+  background-color: var(--accent-light);
+  color: var(--accent-hover);
 }
 
 /* ----------------------------------------------------
@@ -1773,5 +1794,45 @@ button, input, textarea {
     grid-template-columns: 1fr;
     gap: 16px;
   }
+}
+
+/* Scroll Fade Up Animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Hero Animation */
+.hero-content > * {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-content p.hero-intro { animation-delay: 0.1s; }
+.hero-content h1.hero-title { animation-delay: 0.25s; }
+.hero-content p.hero-desc { animation-delay: 0.4s; }
+.hero-content .hero-ctas { animation-delay: 0.55s; }
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Technical Capabilities Learning Tag */
+.skill-learning-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-left: 4px;
 }
 
