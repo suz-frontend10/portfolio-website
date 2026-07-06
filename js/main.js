@@ -78,8 +78,8 @@ function initHeroCanvas() {
   // Configuration
   const particleCount = 45;
   const connectionDistance = 120;
-  const particleColor = "hsla(30, 20%, 80%, 0.8)";
-  const lineColor = "rgba(220, 210, 200, 0.4)";
+  const particleColor = "rgba(99, 102, 241, 0.65)";
+  const lineColor = "rgba(139, 92, 246, 0.2)";
 
   class Particle {
     constructor() {
