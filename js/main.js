@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  initNavbar();
-  initMobileMenu();
-  initScrollSpy();
-  initContactForm();
-  initScrollAnimations();
+  try { initNavbar(); } catch(e) { console.error("Navbar Error:", e); }
+  try { initMobileMenu(); } catch(e) { console.error("Mobile Menu Error:", e); }
+  try { initScrollSpy(); } catch(e) { console.error("ScrollSpy Error:", e); }
+  try { initContactForm(); } catch(e) { console.error("Contact Form Error:", e); }
+  try { initScrollAnimations(); } catch(e) { console.error("Scroll Animations Error:", e); }
+  try { initHeroAnimation(); } catch(e) { console.error("Hero Animation Error:", e); }
 });
 
 /* ----------------------------------------------------
@@ -140,22 +141,34 @@ function initScrollAnimations() {
   const animatedElements = document.querySelectorAll(".fade-up");
   if (animatedElements.length === 0) return;
 
-  const observerOptions = {
-    root: null,
-    threshold: 0.08,
-    rootMargin: "0px 0px -40px 0px"
-  };
+  // Set elements to hidden state only via JS so that if JS fails/is paused, they remain visible!
+  animatedElements.forEach(el => el.classList.add("init-hide"));
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target); // trigger animation only once
-      }
+  try {
+    const observerOptions = {
+      root: null,
+      threshold: 0.08,
+      rootMargin: "0px 0px -40px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          entry.target.classList.remove("init-hide");
+          observer.unobserve(entry.target); // trigger animation only once
+        }
+      });
+    }, observerOptions);
+
+    animatedElements.forEach(el => observer.observe(el));
+  } catch (e) {
+    console.warn("IntersectionObserver not supported, falling back to visible elements:", e);
+    animatedElements.forEach(el => {
+      el.classList.add("visible");
+      el.classList.remove("init-hide");
     });
-  }, observerOptions);
-
-  animatedElements.forEach(el => observer.observe(el));
+  }
 
   // Fallback 1: Trigger immediately for any elements that are already visible in the viewport
   setTimeout(() => {
@@ -163,6 +176,7 @@ function initScrollAnimations() {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight) {
         el.classList.add("visible");
+        el.classList.remove("init-hide");
       }
     });
   }, 150);
@@ -171,6 +185,26 @@ function initScrollAnimations() {
   setTimeout(() => {
     animatedElements.forEach(el => {
       el.classList.add("visible");
+      el.classList.remove("init-hide");
     });
   }, 1200);
+}
+
+/* ----------------------------------------------------
+   HERO STAGGERED ANIMATIONS IN JS
+---------------------------------------------------- */
+function initHeroAnimation() {
+  const heroChildren = document.querySelectorAll(".hero-content > *");
+  if (!heroChildren.length) return;
+
+  // Initialize hidden classes via JS
+  heroChildren.forEach(el => el.classList.add("hero-init-hide"));
+
+  // Trigger staggered reveal
+  heroChildren.forEach((el, index) => {
+    setTimeout(() => {
+      el.classList.add("hero-visible");
+      el.classList.remove("hero-init-hide");
+    }, 100 + index * 150);
+  });
 }

@@ -1806,9 +1806,12 @@ section:not(.bg-beige) {
 
 /* Scroll Fade Up Animation */
 .fade-up {
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-up.init-hide {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fade-up.visible {
@@ -1818,23 +1821,17 @@ section:not(.bg-beige) {
 
 /* Staggered Hero Animation */
 .hero-content > * {
-  animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-content p.hero-intro { animation-delay: 0.1s; }
-.hero-content h1.hero-title { animation-delay: 0.25s; }
-.hero-content p.hero-desc { animation-delay: 0.4s; }
-.hero-content .hero-ctas { animation-delay: 0.55s; }
+.hero-content > *.hero-init-hide {
+  opacity: 0;
+  transform: translateY(16px);
+}
 
-@keyframes heroFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hero-content > *.hero-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Technical Capabilities Learning Tag */
